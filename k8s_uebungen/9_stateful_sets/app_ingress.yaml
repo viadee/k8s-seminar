@@ -4,7 +4,7 @@ metadata:
   name: app-ingress
 spec:
   rules:
-    - host: schulung-demo.cloud.viadee.de
+    - host: schulung-demo.jcon2019.cloud.viadee.de
       http:
         paths:
           - backend:
