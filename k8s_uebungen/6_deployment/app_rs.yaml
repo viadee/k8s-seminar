@@ -16,12 +16,21 @@ spec:
       - name: demo-container
         image: viadee/k8s-demo-app:latest
         imagePullPolicy: Always
-        env:
-          - name: spring.datasource.url
-            value: "jdbc:h2:tcp://h2-db:1521/test"
+        envFrom:
+          - configMapRef:
+              name: app-config
+          - secretRef:
+              name: app-secret
         ports:
         - containerPort: 8080
           name: http
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: 1000m
+          requests:
+            memory: 256Mi
+            cpu: 500m 
         livenessProbe:
           httpGet:
             port: 8080
