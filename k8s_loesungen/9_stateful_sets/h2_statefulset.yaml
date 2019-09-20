@@ -25,6 +25,13 @@ spec:
           name: jdbc
         - containerPort: 81
           name: http
+        resources:
+          limits:
+            memory: 256Mi
+            cpu: 200m
+          requests:
+            memory: 128Mi
+            cpu: 100m 
         livenessProbe:
           tcpSocket:
             port: jdbc

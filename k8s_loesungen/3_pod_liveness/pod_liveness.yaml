@@ -15,6 +15,13 @@ spec:
     env:
       - name: healthcheck.fail
         value: "true"
+    resources:
+      limits:
+        memory: 512Mi
+        cpu: 1000m
+      requests:
+        memory: 256Mi
+        cpu: 500m  
     livenessProbe:
       httpGet:
         port: 8080
