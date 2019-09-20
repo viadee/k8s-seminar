@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: demo-app-rs
+spec:
+  selector:
+    matchLabels:
+      app: demo-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+      - name: demo-container
+        image: viadee/k8s-demo-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /actuator/health
+          failureThreshold: 3
+          initialDelaySeconds: 15
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+      restartPolicy: Always

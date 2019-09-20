@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app-ingress
+spec:
+  rules:
+    - host: schulung-demo.cloud.viadee.de
+      http:
+        paths:
+          - backend:
+              serviceName: demo-app
+              servicePort: 80
+  tls:
+    - secretName: tls-cloud-viadee-de

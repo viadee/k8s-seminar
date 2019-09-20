@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: h2-db
+spec:
+  selector:
+    matchLabels:
+      app: h2-db
+  replicas: 1
+  serviceName: h2-db-headless
+  template:
+    metadata:
+      labels:
+        app: h2-db
+    spec:
+      containers:
+      - name: h2-db-container
+        image: oscarfonts/h2:1.4.197
+        imagePullPolicy: Always
+        volumeMounts:
+          - mountPath: /opt/h2-data
+            name: h2-db-data
+        ports:
+        - containerPort: 1521
+          name: jdbc
+        - containerPort: 81
+          name: http
+        livenessProbe:
+          tcpSocket:
+            port: jdbc
+          failureThreshold: 3
+          initialDelaySeconds: 15
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+      restartPolicy: Always
+  volumeClaimTemplates:
+    - metadata:
+        name: h2-db-data
+      spec:
+        resources:
+            requests:
+              storage: 1Gi
+        storageClassName: "standard"
+        accessModes:
+        - ReadWriteOnce
+

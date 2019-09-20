@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-app
+  labels:
+    app: demo-app
+spec:
+  containers:
+  - name: demo-container
+    image: viadee/k8s-demo-app:latest
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 8080
+      name: http
+  restartPolicy: Always
