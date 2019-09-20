@@ -12,4 +12,12 @@ spec:
     ports:
     - containerPort: 8080
       name: http
+    resources:
+      limits:
+        memory: 512Mi
+        cpu: 1000m
+      requests:
+        memory: 256Mi
+        cpu: 500m  
   restartPolicy: Always
+
