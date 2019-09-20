@@ -33,7 +33,7 @@ spec:
             port: 8080
             path: /actuator/health
           failureThreshold: 3
-          initialDelaySeconds: 120
+          initialDelaySeconds: 30
           periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 1
@@ -44,8 +44,8 @@ spec:
         resources:
           limits:
             memory: 512Mi
-            cpu: 250m
+            cpu: 1000m
           requests:
             memory: 256Mi
-            cpu: 150m
+            cpu: 500m
       restartPolicy: Always
