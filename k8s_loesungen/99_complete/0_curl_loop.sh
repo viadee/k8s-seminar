@@ -1,1 +1,0 @@
-for ((i=1;i<=100;i++)); do curl -s http://schulung-sis.cloud.viadee.de/actuator/env/HOSTNAME | jq .property.value; done
