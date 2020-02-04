@@ -4,11 +4,11 @@ metadata:
   name: app-ingress
 spec:
   rules:
-    - host: schulung-demo.cloud.viadee.de
+    - host: qa.k8s-schulung.cloud.viadee.de
       http:
         paths:
           - backend:
               serviceName: demo-app
               servicePort: 80
   tls:
-    - secretName: tls-cloud-viadee-de
+    - secretName: tls-k8s-schulung-cloud-viadee-de
