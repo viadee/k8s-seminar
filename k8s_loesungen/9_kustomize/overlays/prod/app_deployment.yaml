@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app-deployment
+spec:
+  template:
+    spec:
+      containers:
+      - name: demo-container
+        env:
+         - name: nav.bgcolor
+           value: "red"

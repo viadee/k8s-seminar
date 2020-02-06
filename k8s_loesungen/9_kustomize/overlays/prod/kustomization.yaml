@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../../base
+
+namespace: schulung-prod
+
+
+patchesStrategicMerge:
+- app_ingress.yaml
+- app_deployment.yaml
+
+configMapGenerator:
+  - name: app-config
+    literals:
+      - spring.datasource.url="jdbc:h2:tcp://h2-db:1521/test"
+      - spring.datasource.username="sa"
+      - nav.bgcolor="lightblue"
+
+secretGenerator:
+  - name: app-secret
+    literals:
+      - welcome.text="V2VsY29tZSBvbiB0aGUgdG9wIHNlY3JldCBwb2Q="
+
+images:
+  - name: viadee/k8s-demo-app
+    newName: viadee/k8s-demo-app
+    newTag: v0.0.1
