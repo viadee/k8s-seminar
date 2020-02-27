@@ -4,7 +4,7 @@ metadata:
   name: app-ingress
 spec:
   rules:
-    - host: qa.k8s-schulung.cloud.viadee.de
+    - host: qa5.k8s-schulung.cloud.viadee.de
       http:
         paths:
           - backend:
