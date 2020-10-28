@@ -1,14 +1,14 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: app-ingress
+    name: app-ingress
 spec:
-  rules:
-    - host: qa.k8s-schulung.cloud.viadee.de
-      http:
-        paths:
-          - backend:
-              serviceName: demo-app
-              servicePort: 80
-  tls:
-    - secretName: tls-k8s-schulung-cloud-viadee-de
+    rules:
+        - host: qa.k8s-schulung.viadee.cloud
+          http:
+              paths:
+                  - backend:
+                        serviceName: demo-app
+                        servicePort: 80
+    tls:
+        - secretName: tls-k8s-schulung-viadee-cloud
