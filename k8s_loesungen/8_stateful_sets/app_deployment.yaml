@@ -16,7 +16,7 @@ spec:
       containers:
       - name: demo-container
         image: viadee/k8s-demo-app:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
 #        env:
 #          - name: nav.bgcolor
 #            value: "red"

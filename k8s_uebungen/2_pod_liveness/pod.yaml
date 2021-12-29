@@ -8,7 +8,7 @@ spec:
   containers:
   - name: demo-container
     image: viadee/k8s-demo-app:latest
-    imagePullPolicy: Always
+    imagePullPolicy: IfNotPresent
     ports:
     - containerPort: 8080
       name: http
