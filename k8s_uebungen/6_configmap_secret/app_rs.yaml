@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
       - name: demo-container
-        image: viadee/k8s-demo-app:latest
-        imagePullPolicy: IfNotPresent
+        image: viadee/k8s-demo-app:v0.0.2
         env:
           - name: spring.datasource.url
             value: "jdbc:h2:tcp://h2-db:1521/test"

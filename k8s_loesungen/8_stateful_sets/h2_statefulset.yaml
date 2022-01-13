@@ -16,7 +16,6 @@ spec:
       containers:
       - name: h2-db-container
         image: oscarfonts/h2:1.4.197
-        imagePullPolicy: IfNotPresent
         volumeMounts:
           - mountPath: /opt/h2-data
             name: h2-db-data

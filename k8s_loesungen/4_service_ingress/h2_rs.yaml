@@ -15,7 +15,6 @@ spec:
       containers:
       - name: h2-db-container
         image: oscarfonts/h2:1.4.197
-        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 1521
           name: jdbc
