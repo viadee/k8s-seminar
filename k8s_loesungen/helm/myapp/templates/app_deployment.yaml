@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: demo-app
+  replicas: 1
+  template:
+    metadata:
+      name: demo-app
+      labels:
+        app: demo-app
+    spec:
+      containers:
+      - name: demo-container
+        image: "{{ .Values.app.image.repository }}:{{ .Values.app.image.tag }}"
+        envFrom:
+          - configMapRef:
+              name: app-config
+          - secretRef:
+              name: app-secret
+        ports:
+        - containerPort: 8080
+          name: http
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /actuator/health
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /ready
+        resources:
+          {{- toYaml .Values.app.resources | nindent 12 }}          
+      restartPolicy: Always
