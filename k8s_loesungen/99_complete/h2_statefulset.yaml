@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: h2-db
-  replicas: 1
+  replicas: 2
   serviceName: h2-db-headless
   template:
     metadata:
