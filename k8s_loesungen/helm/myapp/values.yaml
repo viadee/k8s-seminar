@@ -1,7 +1,7 @@
 app:
   image:
-    repository: viadee/k8s-demo-app
-    tag: v0.0.2
+    repository: public.ecr.aws/viadee/k8s-demo-app
+    tag: 1.2.0
   
   ingress:
     host: qa.k8s-schulung.viadee.cloud
