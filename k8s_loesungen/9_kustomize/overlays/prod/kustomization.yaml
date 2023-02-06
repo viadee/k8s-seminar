@@ -24,6 +24,6 @@ secretGenerator:
       - welcome.text="V2VsY29tZSBvbiB0aGUgdG9wIHNlY3JldCBwb2Q="
 
 images:
-  - name: viadee/k8s-demo-app
-    newName: viadee/k8s-demo-app
+  - name: public.ecr.aws/viadee/k8s-demo-app
+    newName: public.ecr.aws/viadee/k8s-demo-app
     newTag: v0.0.1

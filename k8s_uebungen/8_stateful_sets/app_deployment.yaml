@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: demo-container
-        image: viadee/k8s-demo-app:v0.0.2
+        image: public.ecr.aws/viadee/k8s-demo-app:1.2.0
 #        env:
 #          - name: nav.bgcolor
 #            value: "red"
