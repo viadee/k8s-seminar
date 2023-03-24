@@ -9,4 +9,4 @@ spec:
   - port: 80
     targetPort: http
     protocol: TCP
-  type: NodePort
+  type: ClusterIP
