@@ -1,37 +1,33 @@
-apiVersion: apps/v1
-kind: ReplicaSet
+apiVersion: v1
+kind: Pod
 metadata:
-  name: demo-app-rs
+  name: demo-app
+  labels:
+    app: demo-app
 spec:
-  selector:
-    matchLabels:
-      app: demo-app
-  replicas: 2
-  template:
-    metadata:
-      labels:
-        app: demo-app
-    spec:
-      containers:
-      - name: demo-container
-        image: public.ecr.aws/viadee/k8s-demo-app:1.2.0
-        ports:
-        - containerPort: 8080
-          name: http
-        resources:
-          limits:
-            memory: 512Mi
-            cpu: 1000m
-          requests:
-            memory: 256Mi
-            cpu: 500m  
-        livenessProbe:
-          httpGet:
-            port: 8080
-            path: /actuator/health
-          failureThreshold: 3
-          initialDelaySeconds: 30
-          periodSeconds: 5
-          successThreshold: 1
-          timeoutSeconds: 1
-      restartPolicy: Always
+  containers:
+  - name: demo-container
+    image: public.ecr.aws/viadee/k8s-demo-app:1.2.0
+    ports:
+    - containerPort: 8080
+      name: http
+    env:
+      - name: healthcheck.fail
+        value: "true"
+    resources:
+      limits:
+        memory: 512Mi
+        cpu: 1000m
+      requests:
+        memory: 256Mi
+        cpu: 500m  
+    livenessProbe:
+      httpGet:
+        port: 8080
+        path: /actuator/health
+      failureThreshold: 3
+      initialDelaySeconds: 30
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+  restartPolicy: Always
