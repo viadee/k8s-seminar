@@ -35,6 +35,8 @@ kubectl get pod <podname> -o yaml   # oder json
 kubectl logs <pod>
 kubectl describe pod <pod>
 
+kubectl run testpod --image <image-uri> --dry-run=client -oyaml > testpod.yaml  # Grundgerüst für Pod-YAML generieren
+
 kubectl exec -it <pod> -- /bin/sh   # Shell in Pod
 kubectl port-forward <pod> <port>   # Netzwerk-Tunnel zu Pod (localhost:<port>)
 ```
