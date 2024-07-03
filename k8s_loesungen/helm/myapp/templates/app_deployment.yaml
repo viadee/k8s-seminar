@@ -16,6 +16,9 @@ spec:
       containers:
       - name: demo-container
         image: "{{ .Values.app.image.repository }}:{{ .Values.app.image.tag }}"
+        env:
+        - name: healthcheck.fail
+          value: "true"
         envFrom:
           - configMapRef:
               name: app-config
