@@ -4,7 +4,7 @@ metadata:
   name: demo-app
 spec:
   selector:
-    app: demo-app
+    app: demo-app1
   ports:
   - port: 80
     targetPort: http
